@@ -1,0 +1,225 @@
+/* =========================
+   🌐 FONTS
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500&display=swap');
+
+/* =========================
+   🌍 RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   🌍 BODY BASE
+========================= */
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.4s ease;
+}
+
+/* HEADINGS */
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   🌑 DARK THEME VARIABLES
+========================= */
+body.dark-theme {
+  --bg: linear-gradient(135deg, #020617, #0f172a);
+  --card: rgba(255,255,255,0.05);
+  --text: #ffffff;
+  --border: rgba(255,255,255,0.1);
+  --accent: #00c6ff;
+}
+
+/* =========================
+   🌕 LIGHT THEME VARIABLES
+========================= */
+body.light-theme {
+  --bg: linear-gradient(135deg, #e2e8f0, #f8fafc);
+  --card: #ffffff;
+  --text: #111;
+  --border: rgba(0,0,0,0.1);
+  --accent: #0072ff;
+}
+
+/* =========================
+   🌍 FORCE APPLY (IMPORTANT FIX)
+========================= */
+body.dark-theme,
+body.light-theme {
+  background: var(--bg) !important;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* =========================
+   📦 GLOBAL CARD
+========================= */
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(15px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   🔘 BUTTONS
+========================= */
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* PRIMARY */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), #0072ff);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+/* DANGER */
+.btn-danger {
+  background: #ff4d4d;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+}
+
+.btn-danger:hover {
+  background: #ff1a1a;
+}
+
+/* =========================
+   ✍ INPUTS
+========================= */
+input,
+select,
+textarea {
+  font-family: inherit;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* =========================
+   🖱 SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+/* =========================
+   ✨ SELECTION
+========================= */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* =========================
+   📱 MEDIA
+========================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   ✨ ANIMATIONS
+========================= */
+.fade-in {
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   🌗 iPHONE STYLE TOGGLE (GLOBAL)
+========================= */
+.theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 55px;
+  height: 28px;
+  border-radius: 50px;
+  background: #ccc;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+/* knob */
+.theme-switch .switch {
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  margin: 2px;
+  transition: 0.3s;
+}
+
+/* active (dark mode) */
+.theme-switch .switch.active {
+  transform: translateX(27px);
+  background: #111;
+}
+
+/* glowing effect */
+body.dark-theme .theme-switch {
+  background: #00c6ff;
+}
+
+body.light-theme .theme-switch {
+  background: #94a3b8;
+}

@@ -1,0 +1,13 @@
+flask
+tensorflow
+numpy
+opencv-python
+pillow
+flask-login
+flask-sqlalchemy
+flask-bcrypt
+matplotlib
+seaborn
+reportlab
+flask-cors
+gunicorn

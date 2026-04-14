@@ -1,0 +1,232 @@
+/* ===============================
+   🌌 GLOBAL CONTAINER
+================================ */
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 25px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+/* ===============================
+   ✨ FADE ANIMATION
+================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   🧑 PATIENT FORM
+================================ */
+.form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-box h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* INPUTS */
+.form-box input,
+.form-box select {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.form-box input:focus,
+.form-box select:focus {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 10px rgba(0,198,255,0.5);
+}
+
+/* ===============================
+   🚀 BUTTONS
+================================ */
+button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0,198,255,0.6);
+}
+
+/* ===============================
+   📂 FILE INPUT
+================================ */
+input[type="file"] {
+  margin-top: 15px;
+  color: white;
+}
+
+/* ===============================
+   🖼 IMAGE PREVIEW
+================================ */
+img {
+  width: 280px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   ⏳ PROGRESS BAR
+================================ */
+.progress {
+  height: 6px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  animation: load 1s infinite;
+}
+
+@keyframes load {
+  0% { width: 0% }
+  100% { width: 100% }
+}
+
+/* ===============================
+   🎯 RESULT BOX
+================================ */
+.result {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+}
+
+.result h3 {
+  font-size: 22px;
+}
+
+/* ===============================
+   🧑‍⚕️ DOCTOR RECOMMENDATION
+================================ */
+.doctor {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+/* ===============================
+   🎨 COLOR STATES
+================================ */
+.green {
+  color: #00ff99;
+  font-weight: bold;
+}
+
+.red {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+/* ===============================
+   📊 HISTORY SECTION
+================================ */
+.history {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.history h3 {
+  margin-bottom: 10px;
+}
+
+/* HISTORY CARD */
+.history-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.history-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.history-card img {
+  width: 60px;
+  border-radius: 10px;
+}
+
+/* ===============================
+   🌗 LIGHT MODE SUPPORT
+================================ */
+:host-context(.light) .container {
+  background: white;
+  color: black;
+}
+
+:host-context(.light) input,
+:host-context(.light) select {
+  background: #f1f5f9;
+  color: black;
+}
+
+:host-context(.light) .result {
+  background: #e2e8f0;
+}
+
+/* ===============================
+   📱 RESPONSIVE DESIGN
+================================ */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  img {
+    width: 100%;
+  }
+}

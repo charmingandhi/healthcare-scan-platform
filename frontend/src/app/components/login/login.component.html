@@ -1,0 +1,104 @@
+<div class="login-container">
+  <!-- 🌗 THEME TOGGLE -->
+<div class="theme-switch">
+  <input type="checkbox" id="toggleTheme" (change)="toggleTheme()" [checked]="darkMode">
+  <label for="toggleTheme">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+    <div class="ball"></div>
+  </label>
+</div>
+  <!-- LEFT SIDE (MEDICAL VISUAL) -->
+  <div class="login-left">
+    <div class="overlay">
+      <h1>🏥 Healthcare ScanAI</h1>
+      <p>AI Powered Healthcare System</p>
+      <p class="tagline">Diagnose Smarter • Faster • Better</p>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="login-right">
+
+    <div class="card-wrapper" [class.flip]="isSignup">
+
+      <!-- ================= LOGIN ================= -->
+      <div class="card front">
+
+        <h2>Welcome Back 👋</h2>
+
+        <!-- EMAIL -->
+        <input
+          [(ngModel)]="loginEmail"
+          type="email"
+          placeholder="📧 Email">
+        <small class="error" *ngIf="loginError.email">{{ loginError.email }}</small>
+
+        <!-- PASSWORD -->
+        <input
+          [(ngModel)]="loginPassword"
+          type="password"
+          placeholder="🔒 Password">
+        <small class="error" *ngIf="loginError.password">{{ loginError.password }}</small>
+
+        <!-- ROLE -->
+        <select [(ngModel)]="loginRole">
+          <option value="patient">🧑 Patient</option>
+          <option value="doctor">👨‍⚕️ Doctor</option>
+          <option value="admin">⚙ Admin</option>
+        </select>
+
+        <!-- BUTTON -->
+        <button (click)="login()">🚀 Login</button>
+
+        <p class="switch" (click)="toggleMode()">
+          New user? Sign up →
+        </p>
+
+      </div>
+
+      <!-- ================= SIGNUP ================= -->
+      <div class="card back">
+
+        <h2>Create Account 🚀</h2>
+
+        <!-- EMAIL -->
+        <input
+          [(ngModel)]="signupEmail"
+          type="email"
+          placeholder="📧 Email">
+        <small class="error" *ngIf="signupError.email">{{ signupError.email }}</small>
+
+        <!-- PASSWORD -->
+        <input
+          [(ngModel)]="signupPassword"
+          type="password"
+          placeholder="🔒 Password">
+        <small class="error" *ngIf="signupError.password">{{ signupError.password }}</small>
+
+        <!-- CONFIRM -->
+        <input
+          [(ngModel)]="confirmPassword"
+          type="password"
+          placeholder="🔁 Confirm Password">
+        <small class="error" *ngIf="signupError.confirm">{{ signupError.confirm }}</small>
+
+        <!-- ROLE -->
+        <select [(ngModel)]="signupRole">
+          <option value="patient">🧑 Patient</option>
+          <option value="doctor">👨‍⚕️ Doctor</option>
+        </select>
+
+        <!-- BUTTON -->
+        <button (click)="signup()">✨ Sign Up</button>
+
+        <p class="switch" (click)="toggleMode()">
+          Already have account? Login →
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

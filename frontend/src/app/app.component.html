@@ -1,0 +1,149 @@
+<div class="app-wrapper" [class.dark]="darkMode">
+
+  <!-- LOGIN -->
+  <app-login
+    *ngIf="!isLoggedIn"
+    (loginSuccess)="onLogin($event)">
+  </app-login>
+
+  <!-- MAIN APP -->
+  <div *ngIf="isLoggedIn" class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="logo">
+        🏥 <span>Healthcare Scan Assessment Platform</span>
+      </div>
+
+      <nav>
+        <button
+          [class.active]="activeTab==='dashboard'"
+          (click)="setTab('dashboard')">
+          🏠 Dashboard
+        </button>
+
+        <button
+          [class.active]="activeTab==='history'"
+          (click)="setTab('history')">
+          📜 History
+        </button>
+      </nav>
+
+      <div class="bottom">
+        <button (click)="toggleTheme()">🌗 Theme</button>
+        <button (click)="logout()">🚪 Logout</button>
+      </div>
+
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- TOP BAR -->
+      <div class="topbar">
+        <h1>👋 Welcome {{ role | uppercase }}</h1>
+        <div class="user-badge">
+          🧑 {{ role }}
+        </div>
+      </div>
+
+      <!-- ================= DASHBOARD ================= -->
+      <section *ngIf="activeTab === 'dashboard'" class="dashboard">
+
+        <!-- 🔥 STATS -->
+        <div class="cards">
+          <div class="card">
+            👨‍⚕️ Patients
+            <span>120</span>
+          </div>
+
+          <div class="card">
+            🤖 AI Scans
+            <span>89</span>
+          </div>
+
+          <div class="card">
+            📊 Reports
+            <span>340</span>
+          </div>
+        </div>
+
+        <!-- 🔥 CHARTS -->
+        <div class="charts">
+
+          <!-- Doughnut -->
+          <div class="chart-card">
+            <h3>🧠 Prediction Distribution</h3>
+            <canvas id="doughnutChart"></canvas>
+          </div>
+
+          <!-- Line -->
+          <div class="chart-card">
+            <h3>📈 Scan Trends</h3>
+            <canvas id="lineChart"></canvas>
+          </div>
+
+          <!-- Bar -->
+          <div class="chart-card">
+            <h3>📊 Model Accuracy</h3>
+            <canvas id="barChart"></canvas>
+          </div>
+
+        </div>
+
+        <!-- 🔥 UPLOAD -->
+        <div class="upload-section">
+          <h2>🧠 AI Scan Analysis</h2>
+          <app-upload></app-upload>
+        </div>
+
+      </section>
+
+      <!-- ================= HISTORY ================= -->
+      <section *ngIf="activeTab === 'history'" class="history">
+
+        <div class="history-header">
+          <h2>📜 Scan History</h2>
+          <button class="danger" (click)="clearHistory()">🗑 Clear All</button>
+        </div>
+
+        <!-- EMPTY -->
+        <div *ngIf="getHistory().length === 0" class="empty">
+          <div class="empty-box">
+            🧠
+            <p>No scans yet</p>
+            <small>Your reports will appear here</small>
+          </div>
+        </div>
+
+        <!-- LIST -->
+        <div class="history-grid">
+
+          <div *ngFor="let item of getHistory(); let i = index" class="history-card">
+
+            <img [src]="item.image">
+
+            <div class="info">
+              <h3>{{ item.prediction }}</h3>
+
+              <p>📊 Confidence: {{ item.confidence }}%</p>
+
+              <p>👨‍⚕️ {{ item.doctor }}</p>
+
+              <small>🕒 {{ item.date | date:'medium' }}</small>
+            </div>
+
+            <button class="delete" (click)="deleteHistory(i)">
+              ❌
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+</div>

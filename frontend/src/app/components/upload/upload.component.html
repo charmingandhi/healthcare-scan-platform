@@ -1,0 +1,48 @@
+<div class="container">
+
+  <!-- STEP 1 -->
+  <div *ngIf="step === 1">
+
+    <h2>🧾 Patient Details</h2>
+
+    <input [(ngModel)]="name" placeholder="Name">
+    <input [(ngModel)]="age" placeholder="Age">
+
+    <select [(ngModel)]="gender">
+      <option value="">Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+
+    <button (click)="startUpload()">Continue</button>
+
+  </div>
+
+  <!-- STEP 2 -->
+  <div *ngIf="step === 2">
+
+    <input type="file" (change)="onFileSelected($event)">
+
+    <button (click)="onUpload()">🚀 Predict</button>
+
+    <div *ngIf="loading" class="progress"></div>
+
+    <img *ngIf="imagePreview" [src]="imagePreview">
+
+    <div *ngIf="prediction" id="report">
+
+      <h2>🧾 Report</h2>
+
+      <p>{{ name }} | {{ age }} | {{ gender }}</p>
+
+      <p>{{ prediction }}</p>
+      <p>{{ confidence }}%</p>
+      <p>{{ doctor }}</p>
+
+    </div>
+
+    <button *ngIf="prediction" (click)="downloadPDF()">Download PDF</button>
+
+  </div>
+
+</div>
