@@ -32,7 +32,11 @@ Dense.from_config = dense_from_config_patched
 # =======================
 # Load Model
 # =======================
-MODEL_PATH = 'healthcare_model.keras'  # your model file
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "healthcare_model.keras")
+# your model file
 
 model = load_model(MODEL_PATH, compile=False)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
