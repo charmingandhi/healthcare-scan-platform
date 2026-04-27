@@ -3,7 +3,7 @@
 # =======================
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 from tensorflow.keras.layers import Dense
 import numpy as np
 from PIL import Image

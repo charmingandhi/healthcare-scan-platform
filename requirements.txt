@@ -11,4 +11,4 @@ seaborn
 reportlab
 flask-cors
 gunicorn
-
+keras==2.15.0
