@@ -4,6 +4,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from keras.models import load_model
+from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import Dense
 import numpy as np
 from PIL import Image
@@ -35,7 +36,7 @@ Dense.from_config = dense_from_config_patched
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "healthcare_model.keras")
+MODEL_PATH = os.path.join(BASE_DIR, "model.h5")
 # your model file
 
 model = load_model(MODEL_PATH, compile=False)
