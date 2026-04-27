@@ -4,7 +4,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from keras.models import load_model
-from tensorflow.keras.models import load_model
+
 from tensorflow.keras.layers import Dense
 import numpy as np
 from PIL import Image
@@ -33,16 +33,17 @@ Dense.from_config = dense_from_config_patched
 # =======================
 # Load Model
 # =======================
-import os
+from tensorflow.keras.models import load_model
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "model.h5")
-# your model file
 
-model = load_model(MODEL_PATH, compile=False)
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-print("Model loaded successfully ✅")
+try:
+    model = load_model(MODEL_PATH)
+    print("Model loaded successfully ✅")
+except Exception as e:
+    print("Model loading failed ❌:", e)
+    exit()
 
 # =======================
 # Classes
